@@ -18,7 +18,7 @@ def deposit():
     if amount > 0:
         balance += amount
         now = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-        print(f"Rs {amount} deposited is added in your account.")
+        print(f"Rs {amount} deposited in your account.")
         transactions_history.append(f"{now} Deposited: Rs {amount}")
     else:
         print("Invalid amount, Please re-enter the  amount.")
@@ -32,6 +32,7 @@ def withdraw():
     if amount > 0 and amount <= balance:
         balance -= amount
         transactions_history.append(f"{now} Withdraw: Rs {amount}")
+        print(f"{amount}.Rs Withdrawl successfull.")
     else:
         print("Insufficient amount!, please try again! ")
 
@@ -56,8 +57,12 @@ while True:
         withdraw()
     elif choice == 4:
         print("Transaction History:")
-        for transaction in transactions_history:
-            print(transaction)
+        if transactions_history:
+            for transaction in transactions_history:
+                print(transaction)
+        else :
+            print("No transaction yet!")
+
     elif choice == 5:
         print("Thankyou, Exiting ATM.....")
         break
